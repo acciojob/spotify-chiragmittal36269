@@ -286,21 +286,14 @@ public class SpotifyRepository {
 
         //isko dekhna hai...
 
-//        List<User> users = new ArrayList<>();
+        List<User> users = new ArrayList<>();
 //        if(songLikeMap.containsKey(song)){
-//            users=songLikeMap.get(song);
+            users=songLikeMap.get(song);
 //        }
-//        if (!users.contains(presentuser)) {
-//            users.add(presentuser);
-//            songLikeMap.put(song, users);
-//            song.setLikes(song.getLikes() + 1);
-
-//        boolean present = false;
-
-        for (User l : songLikeMap.get(song)) {
-            if (!l.getMobile().equals(mobile)) {
-                songLikeMap.get(song).add(presentuser);
-                song.setLikes(song.getLikes() + 1);
+        if (!users.contains(presentuser)) {
+            users.add(presentuser);
+            songLikeMap.put(song, users);
+            song.setLikes(song.getLikes() + 1);
 
 
                 //way 1:-
@@ -325,7 +318,6 @@ public class SpotifyRepository {
                 }
                 need2.setLikes(need2.getLikes() + 1);
             }
-        }
 
 
         //way 2:-
