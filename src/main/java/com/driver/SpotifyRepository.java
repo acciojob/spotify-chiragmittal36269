@@ -286,39 +286,49 @@ public class SpotifyRepository {
 
         //isko dekhna hai...
 
-        //public HashMap<Song, List<User>> songLikeMap;
-        List<User> users = new ArrayList<>();
-        if(songLikeMap.containsKey(song)){
-            users=songLikeMap.get(song);
-        }
-        if (!users.contains(presentuser)) {
-            users.add(presentuser);
-            songLikeMap.put(song, users);
-            song.setLikes(song.getLikes() + 1);
+//        List<User> users = new ArrayList<>();
+//        if(songLikeMap.containsKey(song)){
+//            users=songLikeMap.get(song);
+//        }
+//        if (!users.contains(presentuser)) {
+//            users.add(presentuser);
+//            songLikeMap.put(song, users);
+//            song.setLikes(song.getLikes() + 1);
 
-            Album need1 = new Album();
-            for (Album a1 : albumSongMap.keySet()) {
-                for (Song a2 : albumSongMap.get(a1)) {
-                    if (a2.getTitle().equals(songTitle)) {
-                        need1 = a1;
-                        break;
+//        boolean present = false;
+
+        for (User l : songLikeMap.get(song)) {
+            if (!l.getMobile().equals(mobile)) {
+                songLikeMap.get(song).add(presentuser);
+                song.setLikes(song.getLikes() + 1);
+
+
+                //way 1:-
+                Album need1 = new Album();
+                for (Album a1 : albumSongMap.keySet()) {
+                    for (Song a2 : albumSongMap.get(a1)) {
+                        if (a2.getTitle().equals(songTitle)) {
+                            need1 = a1;
+                            break;
+                        }
                     }
                 }
-            }
 
-            Artist need2 = new Artist();
-            for (Artist a1 : artistAlbumMap.keySet()) {
-                for (Album a2 : artistAlbumMap.get(a1)) {
-                    if (a2 == need1) {
-                        need2 = a1;
-                        break;
+                Artist need2 = new Artist();
+                for (Artist a1 : artistAlbumMap.keySet()) {
+                    for (Album a2 : artistAlbumMap.get(a1)) {
+                        if (a2 == need1) {
+                            need2 = a1;
+                            break;
+                        }
                     }
                 }
+                need2.setLikes(need2.getLikes() + 1);
             }
-            need2.setLikes(need2.getLikes() + 1);
         }
 
 
+        //way 2:-
 //            Album album = new Album();
 //            for(Album curAlbum : albumSongMap.keySet()){
 //                List<Song> temp = albumSongMap.get(curAlbum);
@@ -363,49 +373,6 @@ public class SpotifyRepository {
 ////                if (e == s) {
 ////                    e.setLikes(e.getLikes() + 1);
 ////                }
-//
-//
-////        Album need1 = new Album();
-////        for (Album a1 : albumSongMap.keySet()) {
-////            for (Song a2 : albumSongMap.get(a1)) {
-////                if (a2.getTitle().equals(songTitle)) {
-////                    need1 = a1;
-////                    break;
-////                }
-////            }
-////        }
-////
-////        Artist need2 = new Artist();
-////        for(Artist a1 : artistAlbumMap.keySet()) {
-////            for (Album a2 : artistAlbumMap.get(a1)) {
-////                if (a2 == need1) {
-////                    need2 = a1;
-////                    break;
-////                }
-////            }
-////        }
-////        need2.setLikes(need2.getLikes()+1);
-//            Album album = new Album();
-//            for (Album curAlbum : albumSongMap.keySet()) {
-//                List<Song> temp = albumSongMap.get(curAlbum);
-//                if (temp.contains(s)) {
-//                    album = curAlbum;
-//                    break;
-//                }
-//            }
-//
-//
-////            public HashMap<Artist, List<Album>> artistAlbumMap;
-//            Artist artist = new Artist();
-//            for (Artist curArtist : artistAlbumMap.keySet()) {
-//                List<Album> temp = artistAlbumMap.get(curArtist);
-//                if (temp.contains(album)) {
-//                    artist = curArtist;
-//                    break;
-//                }
-//            }
-//            artist.setLikes(artist.getLikes() + 1);
-//        }
         return song;
     }
 
