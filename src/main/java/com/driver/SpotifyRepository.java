@@ -307,7 +307,7 @@ public class SpotifyRepository {
 //                    e.setLikes(e.getLikes() + 1);
 //                }
         }
-        Album need1 = null;
+        Album need1 = new Album();
         for (Album a1 : albumSongMap.keySet()) {
             for (Song a2 : albumSongMap.get(a1)) {
                 if (a2.getTitle().equals(songTitle)) {
@@ -317,7 +317,7 @@ public class SpotifyRepository {
             }
         }
 
-        Artist need2 = null;
+        Artist need2 = new Artist();
         for(Artist a1 : artistAlbumMap.keySet()) {
             for (Album a2 : artistAlbumMap.get(a1)) {
                 if (a2.equals(need1)) {
