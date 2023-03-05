@@ -234,23 +234,23 @@ public class SpotifyRepository {
 //            creatorPlaylistMap.put(presentuser, play);
 //        }
 
-        if(creatorPlaylistMap.get(presentuser) != play)
-            creatorPlaylistMap.put(presentuser, play);
-
-
-        if (userPlaylistMap.containsKey(presentuser)) {
-            if (userPlaylistMap.get(presentuser).contains(play)) {
-                userPlaylistMap.get(presentuser).add(play);
-            }
-        }
+//        if(creatorPlaylistMap.get(presentuser) != play)
+//            creatorPlaylistMap.put(presentuser, play);
+//
+//
+//        if (userPlaylistMap.containsKey(presentuser)) {
+//            if (userPlaylistMap.get(presentuser).contains(play)) {
+//                userPlaylistMap.get(presentuser).add(play);
+//            }
+//        }
 
 //meri banai hui
-//        if (!creatorPlaylistMap.containsKey(presentuser)) {
-//            creatorPlaylistMap.put(presentuser, play);
-//        }
-//        if (!userPlaylistMap.containsKey(presentuser)) {
-//            userPlaylistMap.get(presentuser).add(play);
-//        }
+        if (!creatorPlaylistMap.containsKey(presentuser)) {
+            creatorPlaylistMap.put(presentuser, play);
+        }
+        if (!userPlaylistMap.containsKey(presentuser)) {
+            userPlaylistMap.get(presentuser).add(play);
+        }
 
 
 
@@ -312,6 +312,7 @@ public class SpotifyRepository {
 //                if (e == s) {
 //                    e.setLikes(e.getLikes() + 1);
 //                }
+
 
 //        Album need1 = new Album();
 //        for (Album a1 : albumSongMap.keySet()) {
