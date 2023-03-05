@@ -263,7 +263,7 @@ public class SpotifyRepository {
 
         boolean marker1 = false, marker2 = false;
 
-        User presentuser = null;
+        User presentuser = new User();
         for (User u : users) {
             if (u.getMobile().equals(mobile)) {
                 presentuser = u;
@@ -275,7 +275,7 @@ public class SpotifyRepository {
             throw new Exception("User does not exist");
         }
 
-        Song s = null;
+        Song s = new Song();
         for (Song l : songs) {
             if (l.getTitle().equals(songTitle)) {
                 s = l;
