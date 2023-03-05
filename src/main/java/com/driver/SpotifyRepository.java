@@ -83,7 +83,13 @@ public class SpotifyRepository {
         songLikeMap.put(song, new ArrayList<>());
 
         Album album = new Album(albumName);
-        if (!albumSongMap.containsKey(album)) {
+        boolean marker1 = false;
+        for(Album a : albums) {
+            if (a.getTitle().equals(albumName)) {
+                marker1 = true;
+            }
+        }
+        if (!marker1) {
             throw new Exception("Album does not exist");
         }
         albumSongMap.get(album).add(song);
@@ -113,13 +119,15 @@ public class SpotifyRepository {
         playlistSongMap.get(playlist).add(s);
 
         User presentuser = null;
+        boolean marker1 = false;
         for (User user : users) {
             if (user.getMobile().equals(mobile)) {
                 presentuser = user;
+                marker1 = true;
             }
         }
 
-        if (presentuser == null) {
+        if (!marker1) {
             throw new Exception("User does not exist");
         }
 
@@ -163,13 +171,15 @@ public class SpotifyRepository {
         playlistSongMap.get(playlist).add(s);
 
         User presentuser = null;
+        boolean marker1 = false;
         for (User user : users) {
             if (user.getMobile().equals(mobile)) {
                 presentuser = user;
+                marker1 = true;
             }
         }
 
-        if (presentuser == null)
+        if (!marker1)
         {
             throw new Exception("User does not exist");
         }
@@ -191,14 +201,16 @@ public class SpotifyRepository {
     //7th
     public Playlist findPlaylist(String mobile, String playlistTitle) throws Exception {
 
+        boolean marker1 = false, marker2 = false;
         Playlist play = null;
         for (Playlist p : playlists) {
             if (p.getTitle().equals(playlistTitle)) {
                 play = p;
+                marker1 = true;
             }
         }
 
-        if (play == null) {
+        if (!marker1) {
             throw new Exception("Playlist does not exist");
         }
 
@@ -206,9 +218,10 @@ public class SpotifyRepository {
         for (User u : users) {
             if (u.getMobile().equals(mobile)) {
                 presentuser = u;
+                marker2 = true;
             }
         }
-        if (presentuser == null) {
+        if (!marker2) {
             throw new Exception("User does not exist");
         }
 
@@ -244,14 +257,17 @@ public class SpotifyRepository {
     //8th
     public Song likeSong(String mobile, String songTitle) throws Exception {
 
+        boolean marker1 = false, marker2 = false;
+
         User presentuser = null;
         for (User u : users) {
             if (u.getMobile().equals(mobile)) {
                 presentuser = u;
+                marker1 = true;
             }
         }
 
-        if (presentuser == null) {
+        if (!marker1) {
             throw new Exception("User does not exist");
         }
 
@@ -259,9 +275,10 @@ public class SpotifyRepository {
         for (Song l : songs) {
             if (l.getTitle().equals(songTitle)) {
                 s = l;
+                marker2 = true;
             }
         }
-        if (s == null) {
+        if (!marker2) {
             throw new Exception("Song does not exist");
         }
 
