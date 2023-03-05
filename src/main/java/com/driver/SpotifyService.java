@@ -28,27 +28,47 @@ public class SpotifyService {
 
     //4th
     public Song createSong(String title, String albumName, int length) throws Exception {
-        return spotifyRepository.createSong(title, albumName, length);
+        try {
+            return spotifyRepository.createSong(title, albumName, length);
+        } catch (Exception e) {
+            throw new Exception();
+        }
     }
 
     //5th
     public Playlist createPlaylistOnLength(String mobile, String title, int length) throws Exception {
-        return spotifyRepository.createPlaylistOnLength(mobile, title, length);
+        try {
+            return spotifyRepository.createPlaylistOnLength(mobile,title,length);
+        }catch (Exception e){
+            throw new Exception();
+        }
     }
 
     //6th
     public Playlist createPlaylistOnName(String mobile, String title, List<String> songTitles) throws Exception {
-        return spotifyRepository.createPlaylistOnName(mobile, title, songTitles);
+        try {
+            return spotifyRepository.createPlaylistOnName(mobile,title,songTitles);
+        }catch (Exception e){
+            throw new Exception();
+        }
     }
 
     //7th
     public Playlist findPlaylist(String mobile, String playlistTitle) throws Exception {
-        return spotifyRepository.findPlaylist(mobile, playlistTitle);
+        try {
+            return spotifyRepository.findPlaylist(mobile,playlistTitle);
+        }catch (Exception e){
+            throw new Exception();
+        }
     }
 
     //8th
     public Song likeSong(String mobile, String songTitle) throws Exception {
+        try {
             return spotifyRepository.likeSong(mobile, songTitle);
+        } catch (Exception e) {
+            throw new Exception();
+        }
     }
 
     public String mostPopularArtist() {

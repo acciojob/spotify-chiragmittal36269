@@ -84,7 +84,7 @@ public class SpotifyRepository {
 
         Album album = new Album(albumName);
         if (!albumSongMap.containsKey(album)) {
-            throw new Exception();
+            throw new Exception("Album does not exist");
         }
         albumSongMap.get(album).add(song);
         return song;
@@ -115,7 +115,7 @@ public class SpotifyRepository {
         }
 
         if (presentuser == null) {
-            throw new Exception();
+            throw new Exception("User does not exist");
         }
 
         creatorPlaylistMap.put(presentuser, playlist);
@@ -166,7 +166,7 @@ public class SpotifyRepository {
 
         if (presentuser == null)
         {
-            throw new Exception();
+            throw new Exception("User does not exist");
         }
 
         creatorPlaylistMap.put(presentuser, playlist);
@@ -209,15 +209,17 @@ public class SpotifyRepository {
                 presentuser = u;
             }
         }
+        if (presentuser == null) {
+            throw new Exception("User does not exist");
+        }
+
         if (!creatorPlaylistMap.containsKey(presentuser)) {
             creatorPlaylistMap.put(presentuser, play);
         }
         if (!userPlaylistMap.containsKey(presentuser)) {
             userPlaylistMap.get(presentuser).add(play);
         }
-        if (presentuser == null) {
-            throw new Exception("User does not exist");
-        }
+
         return play;
     }
 
