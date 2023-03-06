@@ -62,14 +62,18 @@ public class SpotifyRepository {
         for(Artist artist : artists) {
             if (artist.getName().equals(artistName)) {
                 art = artist;
-                marker1 = true;
-                break;
+            } else {
+                art = createArtist(artistName);
             }
         }
-        if(!marker1)
-        {
-            art = createArtist(artistName);
-        }
+//                marker1 = true;
+//                break;
+//            }
+//        }
+//        if(!marker1)
+//        {
+//            art = createArtist(artistName);
+//        }
 
         Album album = new Album(title);
         albums.add(album);
@@ -226,20 +230,21 @@ public class SpotifyRepository {
 //isko dekha hai....
         List<User> userslist = new ArrayList<>();
         if(playlistListenerMap.containsKey(playlist)){
-            userslist=playlistListenerMap.get(playlist);
+            userslist = playlistListenerMap.get(playlist);
         }
         if(!userslist.contains(presentuser))
             userslist.add(presentuser);
         playlistListenerMap.put(playlist,userslist);
-//        public HashMap<User, Playlist> creatorPlaylistMap;
+
         if(creatorPlaylistMap.get(presentuser)!=playlist)
             creatorPlaylistMap.put(presentuser,playlist);
-//        public HashMap<User, List<Playlist>> userPlaylistMap;
+
         List<Playlist>userplaylists = new ArrayList<>();
         if(userPlaylistMap.containsKey(presentuser)){
-            userplaylists=userPlaylistMap.get(presentuser);
+            userplaylists = userPlaylistMap.get(presentuser);
         }
-        if(!userplaylists.contains(playlist))userplaylists.add(playlist);
+        if(!userplaylists.contains(playlist))
+            userplaylists.add(playlist);
         userPlaylistMap.put(presentuser,userplaylists);
 
 //meri banai hui
@@ -287,14 +292,12 @@ public class SpotifyRepository {
         //isko dekhna hai...
 
         List<User> users = new ArrayList<>();
-//        if(songLikeMap.containsKey(song)){
+        if(songLikeMap.containsKey(song)){
             users=songLikeMap.get(song);
-//        }
+        }
         if (!users.contains(presentuser)) {
             users.add(presentuser);
-//            songLikeMap.put(song, users);
-
-            songLikeMap.get(song).add(presentuser);
+            songLikeMap.put(song, users);
             song.setLikes(song.getLikes() + 1);
 
 
