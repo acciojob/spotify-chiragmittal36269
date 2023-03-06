@@ -59,21 +59,16 @@ public class SpotifyRepository {
         //check artist is present or not
         Artist art = null;
         boolean marker1 = false;
-        for(Artist artist : artists) {
+        for (Artist artist : artists) {
             if (artist.getName().equals(artistName)) {
                 art = artist;
-            } else {
-                art = createArtist(artistName);
+                marker1 = true;
+                break;
             }
         }
-//                marker1 = true;
-//                break;
-//            }
-//        }
-//        if(!marker1)
-//        {
-//            art = createArtist(artistName);
-//        }
+        if (!marker1) {
+            art = createArtist(artistName);
+        }
 
         Album album = new Album(title);
         albums.add(album);
@@ -95,6 +90,7 @@ public class SpotifyRepository {
                 break;
             }
         }
+
         if (!marker1) {
             throw new Exception("Album does not exist");
         }
@@ -115,8 +111,6 @@ public class SpotifyRepository {
         playlists.add(playlist);
 
         playlistSongMap.put(playlist, new ArrayList<>());
-
-
 
         for (Song song : songs) {
             if (song.getLength() == length) {
@@ -195,6 +189,7 @@ public class SpotifyRepository {
         }
         userslist.add(presentuser);
         playlistListenerMap.put(playlist,userslist);
+
         return playlist;
     }
 
